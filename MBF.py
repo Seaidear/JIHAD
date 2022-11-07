@@ -135,18 +135,20 @@ def logs():
         log_token()
     else:print(f"{P}[•]{M} Pilihan tidak ada ");exit()
 ##### LOGIN TOKEN
-def log_token():
-    os.system("clear");banner()
-    print(f"{B} | ")
-    token=input(f"{P}[•] Masukan token : {B}")
-    try:
-        ge = requests.get("https://graph.facebook.com/me?access_token=%s"%(token))
-        open("masuk.txt", "w").write(token)
-        print(f"{B} | ")
-        print(f"{P}[•] loading......");___Jeeck___xnano___lawack___xnxx___()
-    except KeyError:
-        print(f"{B} | ")
-        print(f"{P}[•]{M} Login gagal pastikan token aman");logs()
+def login():
+	try:
+		token = open('.token.txt','r').read()
+		tokenku.append(token)
+		try:
+			sy = requests.get('https://graph.facebook.com/me?access_token='+tokenku[0])
+			public_menu()
+		except KeyError:
+			Public()
+		except requests.exceptions.ConnectionError:
+			clear()
+			print(logo)
+			print ( ' [×] Connection Timeout')
+			exit()
 
 
 komenredem = random.choice(['HENKER WIBU TZY'])
